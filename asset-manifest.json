@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/%7Baround-react%7D/static/css/main.1aba4257.css",
+    "main.js": "/%7Baround-react%7D/static/js/main.61a25adb.js",
+    "static/js/453.8d428687.chunk.js": "/%7Baround-react%7D/static/js/453.8d428687.chunk.js",
+    "static/media/InterVariable.woff2": "/%7Baround-react%7D/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
+    "static/media/Inter-Black.woff2": "/%7Baround-react%7D/static/media/Inter-Black.9ed71fbc8206e8069042.woff2",
+    "static/media/Inter-Regular.woff2": "/%7Baround-react%7D/static/media/Inter-Regular.76224c7fa303861462e7.woff2",
+    "static/media/InterDisplay-Black.woff2": "/%7Baround-react%7D/static/media/InterDisplay-Black.fb55d5da48c7bee4d80a.woff2",
+    "static/media/InterDisplay-Regular.woff2": "/%7Baround-react%7D/static/media/InterDisplay-Regular.a4074fefb60f137f7974.woff2",
+    "static/media/heart.svg": "/%7Baround-react%7D/static/media/heart.3826c074a1b94b101e38893244f97c31.svg",
+    "index.html": "/%7Baround-react%7D/index.html",
+    "static/media/trash.svg": "/%7Baround-react%7D/static/media/trash.8cb59aa98088a1653f62c7e338721dde.svg",
+    "main.1aba4257.css.map": "/%7Baround-react%7D/static/css/main.1aba4257.css.map",
+    "main.61a25adb.js.map": "/%7Baround-react%7D/static/js/main.61a25adb.js.map",
+    "453.8d428687.chunk.js.map": "/%7Baround-react%7D/static/js/453.8d428687.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1aba4257.css",
+    "static/js/main.61a25adb.js"
+  ]
+}
