@@ -126,7 +126,7 @@
   background: none;
   border: none;
 }
-.popup__form-input-invalid {
+.popup__span-input-invalid {
   border-bottom: 1px solid #ff0000;
 }
 
