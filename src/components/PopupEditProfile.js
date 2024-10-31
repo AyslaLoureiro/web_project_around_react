@@ -1,12 +1,15 @@
 import PopupWithForm from "./PopupWithForm";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function PopupEditProfile({ isOpen, onClose }) {
+  const { currentUser, handleSubmitProfile } = useContext(CurrentUserContext);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [name, setName] = useState("");
-  const [about, setAbout] = useState("");
+  const [name, setName] = useState(currentUser?.name);
+  const [description, setDescription] = useState(currentUser?.about);
   const [nameErrorMessage, setNameErrorMessage] = useState("");
-  const [aboutErrorMessage, setAboutErrorMessage] = useState("");
+  const [descriptionErrorMessage, setDescriptionErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState();
   const inputNameRef = useRef();
   const inputAboutRef = useRef();
 
@@ -17,8 +20,18 @@ export default function PopupEditProfile({ isOpen, onClose }) {
     ); // true se o input 1 === true e o input 2 === true. Caso contrario false
 
     setNameErrorMessage(inputNameRef.current.validationMessage); // Seta mensagem de error nos spans
-    setAboutErrorMessage(inputAboutRef.current.validationMessage); // Seta mensagem de error nos spans
-  }, [name, about]);
+    setDescriptionErrorMessage(inputAboutRef.current.validationMessage); // Seta mensagem de error nos spans
+  }, [name, description]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+
+    handleSubmitProfile(name, description, setIsLoading);
+    setName("");
+    setDescription("");
+    onClose();
+  };
 
   return (
     <PopupWithForm
@@ -28,6 +41,8 @@ export default function PopupEditProfile({ isOpen, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
       isFormValid={isFormValid}
+      handleSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <div className="popup__form-inputs">
         <input
@@ -56,12 +71,12 @@ export default function PopupEditProfile({ isOpen, onClose }) {
           minLength="2"
           maxLength="400"
           name="about"
-          value={about}
-          onChange={(e) => setAbout(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         />
         <span className="popup__span-error" id="input-about-error">
-          {aboutErrorMessage}
+          {descriptionErrorMessage}
         </span>
       </div>
     </PopupWithForm>
