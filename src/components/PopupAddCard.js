@@ -12,19 +12,24 @@ export default function PopupAddCard({ isOpen, onClose, handleSubmit }) {
   const inputLinkRef = useRef();
 
   useEffect(() => {
-    setIsFormValid(
-      inputTitleRef.current.validity.valid &&
-        inputLinkRef.current.validity.valid
-    );
+    const isTitleValid = inputTitleRef.current.validity.valid;
+    const isLinkValid = inputLinkRef.current.validity.valid;
 
-    setTitleErrorMessage(inputTitleRef.current.validationMessage);
-    setLinkErrorMessage(inputLinkRef.current.validationMessage);
+    setIsFormValid(isTitleValid && isLinkValid); //  Define isFormValid como true somente se ambos os campos forem validos
+    setTitleErrorMessage(
+      isTitleValid ? "" : inputTitleRef.current.validationMessage
+    );
+    setLinkErrorMessage(
+      isLinkValid ? "" : inputLinkRef.current.validationMessage
+    );
   }, [title, link]);
 
   const handleSubmitAddCard = (event) => {
     event.preventDefault();
-    setIsLoading(true);
 
+    if (!isFormValid) return; //Interrompe a execução da função se o formulário não estiver válido. Isso impede o envio de dados incompletos ou incorretos
+
+    setIsLoading(true);
     handleSubmit({ name: title, link }, setIsLoading);
     setTitle("");
     setLink("");

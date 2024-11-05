@@ -12,16 +12,19 @@ export default function PopupEditAvatar({ isOpen, onClose }) {
 
   useEffect(() => {
     if (inputLinkRef.current) {
-      setIsFormValid(inputLinkRef.current.validity.valid);
-
-      setLinkErrorMessage(inputLinkRef.current.validationMessage);
+      const isValid = inputLinkRef.current.validity.valid;
+      setIsFormValid(isValid);
+      setLinkErrorMessage(
+        isValid ? "" : inputLinkRef.current.validationMessage
+      );
     } // Seta mensagem de error nos spans
   }, [link]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true);
+    if (!isFormValid) return;
 
+    setIsLoading(true);
     handleSubmitAvatar(link, setIsLoading);
     setLink("");
     onClose();
