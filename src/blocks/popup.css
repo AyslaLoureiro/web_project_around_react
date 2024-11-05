@@ -103,7 +103,7 @@
 }
 .button__disabled:hover {
   background-color: unset;
-  cursor: unset;
+  cursor: not-allowed;
 }
 
 .popup__image-zoom {
