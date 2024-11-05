@@ -11,7 +11,6 @@ export default function PopupWithForm({
   handleSubmit,
   isLoading,
 }) {
-  console.log(onClose);
   return (
     <div className={`popup ${name} ${isOpen ? "popup__open" : ""}`}>
       <div className="overlay"></div>
@@ -23,9 +22,11 @@ export default function PopupWithForm({
           <h2 className="popup__title"> {title} </h2>
           {children}
           <button
-            className="button button-submit"
+            className={`button button-submit ${
+              !isFormValid && name !== "confirmation" ? "button__disabled" : ""
+            }`}
             type="submit"
-            required={!isFormValid}
+            required={name === "confirmation" ? false : !isFormValid}
           >
             {isLoading ? "Salvando..." : buttonName}
           </button>

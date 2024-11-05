@@ -12,6 +12,7 @@ export default function PopupCloseConfirmation({
 
   return (
     <PopupWithForm
+      name="confirmation"
       id="popup-delete"
       title="Tem Certeza?"
       isOpen={isOpen}
